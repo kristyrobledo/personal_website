@@ -1,0 +1,54 @@
+---
+title: "Creating my blogdown blog"
+author: "Kristy Robledo"
+date: 2020-02-04T21:13:14-05:00
+categories: ["R"]
+tags: ["R Markdown", "blogdown"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+# My first post!
+
+Ok so here goes. First blogdown post is happening right here!
+H/T and thankyou to [Rebecca Barter](https://twitter.com/rlbarter) on twitter. Her simple tweet got me to bite the bullet and actually start.... No more talking about Future Kristy. 
+
+So, I thought the best first blog is to detail this process. Maybe so I can do it again? Or maybe better yet to help someone else. 
+
+# What is Blogdown?
+
+[Blogdown](https://bookdown.org/yihui/blogdown/) is an R package developed by people a lot smarter than me. It's designed to be used within Rstudio (my safe place), so I feel like this can be done **relatively easily**. 
+
+# What to do??
+
+1. Go to github and create a new repo with a readme.md. I called my repo [personal_website](https://github.com/kristyrobledo/personal_website). 
+2. Go into Rstudio <http://rmarkdown.rstudio.com> and create a `new project`>`version control`>`git` and enter in the address to your new repo. This will automatically setup from the empty repo. 
+3. Install `blogdown` with
+```{r, eval=FALSE}
+install.packages(blogdown)
+```
+
+4. Checkout the [themes](https://themes.gohugo.io/) and suss out what you like. I copied Rebecca and went with `hugo-future-imperfect`. So original. 
+
+5. Back into Rstudio and lets create the site, based on the theme example to make life easier!
+
+```{r, eval=FALSE}
+new_site(theme="jpescador/hugo-future-imperfect")
+```
+
+Take a look at [Julio's website](https://jpescador.com/blog/future-imperfect-theme-release-on-the-go-hugo-static-website-engine/) for more specifics on the theme. 
+
+6. I immediately used 
+```{r, eval=FALSE}
+build_site()
+```
+to render the site and check it out. Fun - works!!
+
+7. Configured `config.toml` to my liking. Then `build_site()`
+
+8. Next I went into `Content>about>Index.md` and changed this to reflect my CV. `build_site()` to check it out. 
+
+9. After this I decided it was time to push up to github - all using the git pane within Rstudio. 
+
