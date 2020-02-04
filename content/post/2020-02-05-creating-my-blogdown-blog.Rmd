@@ -14,14 +14,14 @@ featured: ''
 featuredalt: ''
 featuredpath: ''
 linktitle: ''
+header:
+  image: "headers/blogdown_hex.png"
 ---
 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
 ```
-
-![](/post/logo.png)
 
 # My first post!
 
