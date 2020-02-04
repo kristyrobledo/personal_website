@@ -1,9 +1,12 @@
 ---
 title: "Creating my blogdown blog"
 author: "Kristy Robledo"
-date: 2020-02-04T21:13:14-05:00
+date: "2020-02-04"
 categories: ["R"]
 tags: ["R Markdown", "blogdown"]
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
