@@ -6,7 +6,7 @@
     <description>Recent content in Categories on Kristy Robledo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 04 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 05 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>R</title>
       <link>/categories/r/</link>
-      <pubDate>Tue, 04 Feb 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>/categories/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial</title>
+      <link>/categories/tutorial/</link>
+      <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/tutorial/</guid>
       <description></description>
     </item>
     

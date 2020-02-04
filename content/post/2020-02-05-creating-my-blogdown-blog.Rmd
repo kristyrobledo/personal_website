@@ -1,17 +1,27 @@
 ---
-title: "Creating my blogdown blog"
-author: "Kristy Robledo"
-date: "2020-02-04"
-categories: ["R"]
-tags: ["R Markdown", "blogdown"]
-output:
-  blogdown::html_page:
-    toc: true
+title: Creating my blogdown blog
+author: Kirsty Robledo
+date: '2020-02-05'
+slug: creating-my-blogdown-blog
+categories:
+  - R
+  - Tutorial
+tags:
+  - blogdown
+  - R Markdown
+description: ''
+featured: ''
+featuredalt: ''
+featuredpath: ''
+linktitle: ''
 ---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
 ```
+
+![](/post/logo.png)
 
 # My first post!
 
@@ -63,3 +73,4 @@ to render the site and check it out. Fun - works!!
 
 13. Looks like it deployed! Wow - seriously as easy as people really did write and I actually still have no idea what css is or how to code it. 
 
+14. To create a post.... use the "Addin" bar in Rstudio and click `New Post`. Complete the metadata (feeds directly into your yaml) and like magic.... it just works!
