@@ -52,3 +52,11 @@ to render the site and check it out. Fun - works!!
 
 9. After this I decided it was time to push up to github - all using the git pane within Rstudio. 
 
+10. Now with the shell of a website I decided it was time to try deployment..... rather than spending a lot more time on this and then failing at deployment!
+
+11. Head to <https://www.netlify.com/> and create a free account. I created mine through github. 
+
+12. Click on `new site` and create a new site from the correct github repo. Once you have deployed it, you can also change your domain - luckily there are very few Kristy Robledo's around and I snagged <https://kristyrobledo.netlify.com//>.
+
+13. Looks like it deployed! Wow - seriously as easy as people really did write and I actually still have no idea what css is or how to code it. 
+
