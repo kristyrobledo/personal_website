@@ -74,3 +74,6 @@ to render the site and check it out. Fun - works!!
 13. Looks like it deployed! Wow - seriously as easy as people really did write and I actually still have no idea what css is or how to code it. 
 
 14. To create a post.... use the "Addin" bar in Rstudio and click `New Post`. Complete the metadata (feeds directly into your yaml) and like magic.... it just works!
+
+**AMENDMENT**
+After trying for ages to figure out why my homepage was blank, it was pointed out to me on Slack that blogdown::serve_site() is superior to build_site(). So at the end of all of this, open a fresh Rstudio and serve_site and upload that public directory for success!
