@@ -9,31 +9,50 @@ categories:
 tags:
   - blogdown
   - R Markdown
+
 description: ''
 featured: ''
 featuredalt: ''
 featuredpath: ''
 linktitle: ''
+output:
+  blogdown::html_page:
+    toc: true
+    toc_depth: 1
+    number_sections: true
 ---
 
 
+<div id="TOC">
+<ul>
+<li><a href="#my-first-post"><span class="toc-section-number">1</span> My first post!</a></li>
+<li><a href="#what-is-blogdown"><span class="toc-section-number">2</span> What is Blogdown?</a></li>
+<li><a href="#what-to-do"><span class="toc-section-number">3</span> What to do??</a></li>
+</ul>
+</div>
 
 <p><img src="/post/2020-02-05-creating-my-blogdown-blog_files/blogdown_hex.png" /></p>
 <div id="my-first-post" class="section level1">
-<h1>My first post!</h1>
+<h1><span class="header-section-number">1</span> My first post!</h1>
 <p>Ok so here goes. First blogdown post is happening right here!
 H/T and thankyou to <a href="https://twitter.com/rlbarter">Rebecca Barter</a> on twitter. Her simple tweet got me to bite the bullet and actually start…. No more talking about Future Kristy.</p>
-<p>So, I thought the best first blog is to detail this process. Maybe so I can do it again? Or maybe better yet to help someone else.</p>
+<p>So, I thought the best first blog should be to detail this process. Maybe so I can do it again? Or better yet - to help someone else.</p>
 </div>
 <div id="what-is-blogdown" class="section level1">
-<h1>What is Blogdown?</h1>
-<p><a href="https://bookdown.org/yihui/blogdown/">Blogdown</a> is an R package developed by people a lot smarter than me. It’s designed to be used within Rstudio (my safe place), so I feel like this can be done <strong>relatively easily</strong>.</p>
+<h1><span class="header-section-number">2</span> What is Blogdown?</h1>
+<p><a href="https://bookdown.org/yihui/blogdown/">Blogdown</a> is an R package developed by people a lot smarter than me. It’s designed to be used within Rstudio (my safe place), so I feel like this can be done <strong>relatively easily</strong>.
+See these blog posts for more references and work throughs (and they are probably better written than this!)</p>
+<ul>
+<li><a href="http://www.rebeccabarter.com/blog/2020-02-03_blogger/">Rebecca Barter</a></li>
+<li><a href="https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/">Allison Hall</a></li>
+</ul>
 </div>
 <div id="what-to-do" class="section level1">
-<h1>What to do??</h1>
+<h1><span class="header-section-number">3</span> What to do??</h1>
 <ol style="list-style-type: decimal">
-<li>Go to github and create a new repo with a readme.md. I called my repo <a href="https://github.com/kristyrobledo/personal_website">personal_website</a>.</li>
-<li>Go into Rstudio <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a> and create a <code>new project</code>&gt;<code>version control</code>&gt;<code>git</code> and enter in the address to your new repo. This will automatically setup from the empty repo.</li>
+<li>Go to github and create a new repo (with a readme.md). I called my repo <a href="https://github.com/kristyrobledo/personal_website">personal_website</a>.</li>
+<li>Go into Rstudio <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a> and create a <code>new project</code>&gt;<code>version control</code>&gt;<code>git</code> and enter in the address to your new repo. This will automatically setup from the empty repo and be linked to github. Sweet.<br />
+</li>
 <li>Install <code>blogdown</code> with</li>
 </ol>
 <pre class="r"><code>install.packages(blogdown)</code></pre>
@@ -46,11 +65,12 @@ H/T and thankyou to <a href="https://twitter.com/rlbarter">Rebecca Barter</a> on
 <ol start="6" style="list-style-type: decimal">
 <li>I immediately used</li>
 </ol>
-<pre class="r"><code>build_site()</code></pre>
+<pre class="r"><code>serve_site()</code></pre>
 <p>to render the site and check it out. Fun - works!!</p>
+<p><strong>Note</strong>: I started by using <code>build_site()</code> but ran into dramas. Smarter people than me found out the issue was using build_site rather than serve_site….</p>
 <ol start="7" style="list-style-type: decimal">
-<li><p>Configured <code>config.toml</code> to my liking. Then <code>build_site()</code></p></li>
-<li><p>Next I went into <code>Content&gt;about&gt;Index.md</code> and changed this to reflect my CV. <code>build_site()</code> to check it out.</p></li>
+<li><p>Configured <code>config.toml</code> to my liking. The beauty of serve_site() is the live reloading…. love it!</p></li>
+<li><p>Next I went into <code>Content&gt;about&gt;Index.md</code> and changed this to reflect my CV.</p></li>
 <li><p>After this I decided it was time to push up to github - all using the git pane within Rstudio.</p></li>
 <li><p>Now with the shell of a website I decided it was time to try deployment….. rather than spending a lot more time on this and then failing at deployment!</p></li>
 <li><p>Head to <a href="https://www.netlify.com/" class="uri">https://www.netlify.com/</a> and create a free account. I created mine through github.</p></li>
@@ -59,5 +79,5 @@ H/T and thankyou to <a href="https://twitter.com/rlbarter">Rebecca Barter</a> on
 <li><p>To create a post…. use the “Addin” bar in Rstudio and click <code>New Post</code>. Complete the metadata (feeds directly into your yaml) and like magic…. it just works!</p></li>
 </ol>
 <p><strong>AMENDMENT</strong>
-After trying for ages to figure out why my homepage was blank, it was pointed out to me on Slack that blogdown::serve_site() is superior to build_site(). So at the end of all of this, open a fresh Rstudio and serve_site and upload that public directory for success!</p>
+After trying for ages to figure out why my homepage was blank, it was pointed out to me on Slack that <code>blogdown::serve_site()</code> is superior to build_site(). So make sure you are using serve_site!</p>
 </div>

@@ -9,11 +9,17 @@ categories:
 tags:
   - blogdown
   - R Markdown
+
 description: ''
 featured: ''
 featuredalt: ''
 featuredpath: ''
 linktitle: ''
+output:
+  blogdown::html_page:
+    toc: true
+    toc_depth: 1
+    number_sections: true
 ---
 
 
@@ -28,16 +34,20 @@ knitr::opts_chunk$set(collapse = TRUE)
 Ok so here goes. First blogdown post is happening right here!
 H/T and thankyou to [Rebecca Barter](https://twitter.com/rlbarter) on twitter. Her simple tweet got me to bite the bullet and actually start.... No more talking about Future Kristy. 
 
-So, I thought the best first blog is to detail this process. Maybe so I can do it again? Or maybe better yet to help someone else. 
+So, I thought the best first blog should be to detail this process. Maybe so I can do it again? Or better yet - to help someone else. 
 
 # What is Blogdown?
 
 [Blogdown](https://bookdown.org/yihui/blogdown/) is an R package developed by people a lot smarter than me. It's designed to be used within Rstudio (my safe place), so I feel like this can be done **relatively easily**. 
+See these blog posts for more references and work throughs (and they are probably better written than this!)
+
+- [Rebecca Barter](http://www.rebeccabarter.com/blog/2020-02-03_blogger/)
+- [Allison Hall](https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/)
 
 # What to do??
 
-1. Go to github and create a new repo with a readme.md. I called my repo [personal_website](https://github.com/kristyrobledo/personal_website). 
-2. Go into Rstudio <http://rmarkdown.rstudio.com> and create a `new project`>`version control`>`git` and enter in the address to your new repo. This will automatically setup from the empty repo. 
+1. Go to github and create a new repo (with a readme.md). I called my repo [personal_website](https://github.com/kristyrobledo/personal_website). 
+2. Go into Rstudio <http://rmarkdown.rstudio.com> and create a `new project`>`version control`>`git` and enter in the address to your new repo. This will automatically setup from the empty repo and be linked to github. Sweet.  
 3. Install `blogdown` with
 ```{r, eval=FALSE}
 install.packages(blogdown)
@@ -55,13 +65,15 @@ Take a look at [Julio's website](https://jpescador.com/blog/future-imperfect-the
 
 6. I immediately used 
 ```{r, eval=FALSE}
-build_site()
+serve_site()
 ```
 to render the site and check it out. Fun - works!!
 
-7. Configured `config.toml` to my liking. Then `build_site()`
+**Note**: I started by using `build_site()` but ran into dramas. Smarter people than me found out the issue was using build_site rather than serve_site.... 
 
-8. Next I went into `Content>about>Index.md` and changed this to reflect my CV. `build_site()` to check it out. 
+7. Configured `config.toml` to my liking. The beauty of serve_site() is the live reloading.... love it! 
+
+8. Next I went into `Content>about>Index.md` and changed this to reflect my CV. 
 
 9. After this I decided it was time to push up to github - all using the git pane within Rstudio. 
 
@@ -76,4 +88,4 @@ to render the site and check it out. Fun - works!!
 14. To create a post.... use the "Addin" bar in Rstudio and click `New Post`. Complete the metadata (feeds directly into your yaml) and like magic.... it just works!
 
 **AMENDMENT**
-After trying for ages to figure out why my homepage was blank, it was pointed out to me on Slack that blogdown::serve_site() is superior to build_site(). So at the end of all of this, open a fresh Rstudio and serve_site and upload that public directory for success!
+After trying for ages to figure out why my homepage was blank, it was pointed out to me on Slack that `blogdown::serve_site()` is superior to build_site(). So make sure you are using serve_site!
