@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Contact on Kristy Robledo</title>
-    <link>https://kristyrobledo.netlify.com/contact/</link>
+    <link>/contact/</link>
     <description>Recent content in Contact on Kristy Robledo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://kristyrobledo.netlify.com/contact/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/contact/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
