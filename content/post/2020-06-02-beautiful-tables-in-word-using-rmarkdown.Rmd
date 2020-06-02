@@ -1,0 +1,125 @@
+---
+title: Beautiful tables in word using Rmarkdown
+author: Kristy Robledo
+date: '2020-06-02'
+slug: beautiful-tables-in-word-using-rmarkdown
+categories:
+  - R
+tags:
+  - R Markdown
+description: ''
+featured: ''
+featuredalt: ''
+featuredpath: ''
+linktitle: ''
+---
+
+As a statistician, I collaborate with a lot of clinicians, and therefore need to be producing reports in word. Let's not go any further into it, but I need to create beautiful Rmarkdown reports that knit to word. This feels wierd to write a html Rmarkdown about writing Rmarkdown reports in word, but lets get started!
+
+## Example data
+
+First lets get an example clinical trial dataset that we might want to summarise, and some packages that we will need. 
+
+```{r}
+library(knitr)
+library(survival) #pbc dataset lives here
+data(pbc)
+suppressPackageStartupMessages(library(tidyverse)) 
+suppressPackageStartupMessages(library(janitor))
+suppressPackageStartupMessages(library(knitr)) # to kable
+suppressPackageStartupMessages(library(flextable)) #to flextable
+```
+
+OK. So lets start with creating our summary table. If you havent used the `tabyl` function in `janitor`, get on it! 
+
+```{r}
+#glimpse(pbc)
+
+pbc %>%
+  tabyl(stage, trt) %>%
+    adorn_totals() %>%
+  adorn_percentages("col") %>%
+  adorn_pct_formatting(digits = 1)  %>%
+  adorn_ns("front") ->t1
+
+
+```
+
+Now, typically if you want to print this nicely in Rmarkdown, you would use `kable`(or maybe `kableextra`). That would look like this:
+
+```{r}
+t1 %>%
+  select(stage, `1`, `2`) %>%
+  kable(col.names = c("Stage", "Placebo", "Treatment"))
+```
+
+So while there are plenty of ways to [beautify this in html or latex (pdf)](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html),  there aren't a lot of options for anyone to render in word. 
+
+Enter, [`flextable`](https://cran.r-project.org/web/packages/flextable/vignettes/overview.html). Thankyou David Gohel! His also the author of `officer`, another amazing package for writing Rmarkdown reports in word. 
+
+So how do we use `flextable`?
+
+```{r}
+t1 %>%
+  select(stage, `1`, `2`) %>%
+  filter(is.na(stage)==FALSE) %>%
+  flextable() %>%
+  set_header_labels() %>%
+  knit_print()
+```
+
+Its that easy. But now lets beautify with all of the functions that you might want to use, and the ones that will work in rendering to word. 
+
+```{r}
+t1 %>%
+  select(stage, `1`, `2`) %>%
+  filter(is.na(stage)==FALSE) %>%
+  add_row(stage="Stage", .before = 1) %>%
+  flextable() %>%
+  set_caption("Stage of disease by treatment") %>%
+   set_header_labels(stage=" ",`1`="Placebo", `2`="Treatment" ) %>%
+   align(j=1, align = "left", part = "all") %>%
+   align(j=2:3, align = "center", part = "all") %>%  
+   bold( i=c(1)) %>%
+   font(fontname = "Calibri", part="all") %>%
+   padding(i=c(2:5), j=1, padding.left = 20) %>%
+   set_table_properties(width = 1, layout = "autofit") %>%
+  knit_print()
+```
+
+Lets unpack some of these functions. 
+
+- `set_caption` is the table caption in word. 
+- `set_header_labels` are the column names 
+- `align` aligns the columns, and `part="all"` means we want to align the header as well as the table data.  `j` specifies the columns that you wish to align. 
+- `bold` is used to make a row bold (row 1 as `i=1`). You can also use `italics`
+- `font` sets the font of the table data
+- `padding` - my absolute favourite - adds some space to indent the column/row specified. You can also pad right if you want to (or top or bottom)
+- `set_table_properties` fits the table to the width of the word document. Its not great when I render it here in html but trust me, its great in word. 
+
+Some further notes when you are setting up the Rmarkdown file. 
+
+## Table numbering
+
+In order to create the autonumbering for the table numbers in word, use the following code in your setup chunk:
+
+```{r, eval=FALSE}
+library(officer)
+library(flextable)
+
+autonum <- run_autonum() #to number the tables
+```
+
+It only needs to be done once in that setup chunk. Then in your flextables, make sure you add in the following option `autonum=autonum` like so:
+
+```{r, eval=FALSE}
+t1 %>%
+  flextable() %>%
+   set_caption("Table 1", style = "Table Caption", autonum = autonum)
+```
+
+## Header rows
+
+They just **magically** are setup properly and for big tables that flow onto a second page, the header names follow onto the second page!
+
+You can also `add_header_row` that might merge columns together! In word!!
