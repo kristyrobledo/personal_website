@@ -15,7 +15,7 @@ featuredpath: ''
 linktitle: ''
 output:
   blogdown::html_page:
-    number_sections: true
+    number_sections: false
 ---
 
 
@@ -96,6 +96,8 @@ t1 %>%
    set_table_properties(width = 1, layout = "autofit") %>%
   knit_print()
 ```
+
+Now, this has rendered a bit wierdly in my blog, due to the Blog formatting etc. Please trust me this is lovely in word.
 
 Lets unpack some of these functions. 
 
