@@ -5,6 +5,7 @@ date: '2020-06-02'
 slug: beautiful-tables-in-word-using-rmarkdown
 categories:
   - R
+  - word
 tags:
   - R Markdown
 description: ''
@@ -12,7 +13,12 @@ featured: ''
 featuredalt: ''
 featuredpath: ''
 linktitle: ''
+output:
+  blogdown::html_page:
+    number_sections: true
 ---
+
+
 
 As a statistician, I collaborate with a lot of clinicians, and therefore need to be producing reports in word. Let's not go any further into it, but I need to create beautiful Rmarkdown reports that knit to word. This feels wierd to write a html Rmarkdown about writing Rmarkdown reports in word, but lets get started!
 
@@ -30,6 +36,8 @@ suppressPackageStartupMessages(library(knitr)) # to kable
 suppressPackageStartupMessages(library(flextable)) #to flextable
 ```
 
+## Summary table
+
 OK. So lets start with creating our summary table. If you havent used the `tabyl` function in `janitor`, get on it! 
 
 ```{r}
@@ -44,6 +52,8 @@ pbc %>%
 
 
 ```
+
+## Tables in word
 
 Now, typically if you want to print this nicely in Rmarkdown, you would use `kable`(or maybe `kableextra`). That would look like this:
 
@@ -99,7 +109,7 @@ Lets unpack some of these functions.
 
 Some further notes when you are setting up the Rmarkdown file. 
 
-## Table numbering
+### Table numbering
 
 In order to create the autonumbering for the table numbers in word, use the following code in your setup chunk:
 
@@ -118,7 +128,7 @@ t1 %>%
    set_caption("Table 1", style = "Table Caption", autonum = autonum)
 ```
 
-## Header rows
+### Header rows
 
 They just **magically** are setup properly and for big tables that flow onto a second page, the header names follow onto the second page!
 
